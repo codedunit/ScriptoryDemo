@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-navigation/bottom-tabs": "^7.4.2",
+    "@react-navigation/native": "^7.1.14",
+    "@react-navigation/stack": "^7.4.2",
+    "@shopify/flash-list": "^1.8.3",
+    "expo-auth-session": "~6.2.1",
+    "expo-document-picker": "^13.1.6",
+    "expo-status-bar": "^2.2.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-reorderable-list": "^0.16.2",
+    "react-native-safe-area-context": "^5.5.1",
+    "react-native-screens": "^4.11.1",
+    "expo-dev-client": "~5.2.4",
+    "expo": "~53.0.17",
+    "react-native": "0.79.5"
+  },
+  "name": "ScriptoryDemo",
+  "version": "1.0.0",
+  "scripts": {
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  }
+}
