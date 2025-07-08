@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scriptory Dark Renaissance Theme</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1117 100%);
+            font-family: 'Times New Roman', serif;
+            color: #e8e2d4;
+            min-height: 100vh;
+        }
+
+        .theme-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #c9a96e 0%, #f4e4bc 50%, #8b7355 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(201, 169, 110, 0.3);
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #b5a694;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .color-section {
+            background: rgba(16, 20, 24, 0.8);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .color-section h3 {
+            color: #c9a96e;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .color-card {
+            background: var(--color);
+            height: 80px;
+            border-radius: 8px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .color-info {
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        .color-name {
+            font-size: 11px;
+            color: #b5a694;
+            font-weight: 500;
+        }
+
+        .color-hex {
+            font-size: 10px;
+            color: #6b5b47;
+            font-family: 'Courier New', monospace;
+        }
+
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .example-section {
+            background: rgba(16, 20, 24, 0.9);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+        }
+
+        .example-section h4 {
+            color: #c9a96e;
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* UI Component Examples */
+        .button-primary {
+            background: linear-gradient(135deg, #c9a96e 0%, #8b7355 100%);
+            color: #0a0a0a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 0 20px rgba(201, 169, 110, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .button-accent {
+            background: linear-gradient(135deg, #7a4a52 0%, #9d5a63 100%);
+            color: #f4e4bc;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button-accent:hover {
+            box-shadow: 0 0 20px rgba(122, 74, 82, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: #c9a96e;
+            border: 2px solid #c9a96e;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button-secondary:hover {
+            background: rgba(201, 169, 110, 0.1);
+        }
+
+        .highlight-card {
+            background: rgba(122, 74, 82, 0.15);
+            border: 1px solid rgba(122, 74, 82, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .accent-border {
+            border-left: 4px solid #7a4a52;
+            padding-left: 16px;
+        }
+
+        .notification-highlight {
+            background: rgba(157, 90, 99, 0.2);
+            border: 1px solid rgba(157, 90, 99, 0.4);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            color: #f4e4bc;
+        }
+
+        .input-field {
+            background: rgba(16, 20, 24, 0.8);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #e8e2d4;
+            margin: 8px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #c9a96e;
+            box-shadow: 0 0 10px rgba(201, 169, 110, 0.3);
+        }
+
+        .card {
+            background: rgba(16, 20, 24, 0.6);
+            border: 1px solid rgba(139, 115, 85, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-success {
+            background: rgba(74, 128, 93, 0.2);
+            border-left: 4px solid #4a805d;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .status-warning {
+            background: rgba(184, 134, 11, 0.2);
+            border-left: 4px solid #b8860b;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .status-error {
+            background: rgba(139, 69, 73, 0.2);
+            border-left: 4px solid #8b4549;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .accent-glow {
+            box-shadow: 0 0 30px rgba(201, 169, 110, 0.3);
+            border: 1px solid rgba(201, 169, 110, 0.5);
+        }
+
+        .code-block {
+            background: rgba(6, 8, 10, 0.9);
+            border: 1px solid rgba(107, 91, 71, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #e8e2d4;
+            overflow-x: auto;
+        }
+
+        .gradient-showcase {
+            height: 100px;
+            border-radius: 12px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0a;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-1 {
+            background: linear-gradient(135deg, #c9a96e 0%, #f4e4bc 50%, #8b7355 100%);
+        }
+
+        .gradient-2 {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1117 100%);
+            color: #c9a96e;
+        }
+
+        .gradient-4 {
+            background: linear-gradient(135deg, #7a4a52 0%, #c9a96e 50%, #9d5a63 100%);
+        }
+
+        .gradient-5 {
+            background: linear-gradient(45deg, rgba(122, 74, 82, 0.2) 0%, rgba(201, 169, 110, 0.1) 50%, rgba(157, 90, 99, 0.2) 100%);
+            color: #e8e2d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-container">
+        <div class="header">
+            <h1>Scriptory Dark Renaissance Theme</h1>
+            <p>A sophisticated blend of classical Renaissance elegance with modern dark UI principles</p>
+        </div>
+
+        <div class="color-palette">
+            <!-- Primary Colors -->
+            <div class="color-section">
+                <h3>Primary Palette</h3>
+                <div class="color-grid">
+                    <div class="color-card" style="--color: #c9a96e">
+                        <div class="color-info">
+                            <div class="color-name">Renaissance Gold</div>
+                            <div class="color-hex">#c9a96e</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #f4e4bc">
+                        <div class="color-info">
+                            <div class="color-name">Illuminated Parchment</div>
+                            <div class="color-hex">#f4e4bc</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #8b7355">
+                        <div class="color-info">
+                            <div class="color-name">Antique Bronze</div>
+                            <div class="color-hex">#8b7355</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #6b5b47">
+                        <div class="color-info">
+                            <div class="color-name">Aged Leather</div>
+                            <div class="color-hex">#6b5b47</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dark Base Colors -->
+            <div class="color-section">
+                <h3>Dark Foundation</h3>
+                <div class="color-grid">
+                    <div class="color-card" style="--color: #0a0a0a">
+                        <div class="color-info">
+                            <div class="color-name">Midnight Black</div>
+                            <div class="color-hex">#0a0a0a</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #1a1a1a">
+                        <div class="color-info">
+                            <div class="color-name">Charcoal</div>
+                            <div class="color-hex">#1a1a1a</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #0d1117">
+                        <div class="color-info">
+                            <div class="color-name">Dark Slate</div>
+                            <div class="color-hex">#0d1117</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #101418">
+                        <div class="color-info">
+                            <div class="color-name">Deep Shadow</div>
+                            <div class="color-hex">#101418</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Colors -->
+            <div class="color-section">
+                <h3>Text Hierarchy</h3>
+                <div class="color-grid">
+                    <div class="color-card" style="--color: #e8e2d4">
+                        <div class="color-info">
+                            <div class="color-name">Primary Text</div>
+                            <div class="color-hex">#e8e2d4</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #b5a694">
+                        <div class="color-info">
+                            <div class="color-name">Secondary Text</div>
+                            <div class="color-hex">#b5a694</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #8a7d6b">
+                        <div class="color-info">
+                            <div class="color-name">Muted Text</div>
+                            <div class="color-hex">#8a7d6b</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #6b5b47">
+                        <div class="color-info">
+                            <div class="color-name">Disabled Text</div>
+                            <div class="color-hex">#6b5b47</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accent Colors -->
+            <div class="color-section">
+                <h3>Renaissance Accents</h3>
+                <div class="color-grid">
+                    <div class="color-card" style="--color: #7a4a52">
+                        <div class="color-info">
+                            <div class="color-name">Venetian Red</div>
+                            <div class="color-hex">#7a4a52</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #9d5a63">
+                        <div class="color-info">
+                            <div class="color-name">Burgundy Rose</div>
+                            <div class="color-hex">#9d5a63</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #5a3a3f">
+                        <div class="color-info">
+                            <div class="color-name">Dark Wine</div>
+                            <div class="color-hex">#5a3a3f</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #6b4147">
+                        <div class="color-info">
+                            <div class="color-name">Muted Crimson</div>
+                            <div class="color-hex">#6b4147</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Colors -->
+            <div class="color-section">
+                <h3>Status & Feedback</h3>
+                <div class="color-grid">
+                    <div class="color-card" style="--color: #4a805d">
+                        <div class="color-info">
+                            <div class="color-name">Success Green</div>
+                            <div class="color-hex">#4a805d</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #b8860b">
+                        <div class="color-info">
+                            <div class="color-name">Warning Amber</div>
+                            <div class="color-hex">#b8860b</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #8b4549">
+                        <div class="color-info">
+                            <div class="color-name">Error Crimson</div>
+                            <div class="color-hex">#8b4549</div>
+                        </div>
+                    </div>
+                    <div class="color-card" style="--color: #4a6b8a">
+                        <div class="color-info">
+                            <div class="color-name">Info Blue</div>
+                            <div class="color-hex">#4a6b8a</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="usage-examples">
+            <!-- UI Components -->
+            <div class="example-section">
+                <h4>Interactive Elements</h4>
+                <button class="button-primary">Capture Note</button>
+                <button class="button-secondary">View Library</button>
+                <input type="text" class="input-field" placeholder="Search your notes...">
+                <div class="card">
+                    <h5 style="color: #c9a96e; margin-top: 0;">Note Preview Card</h5>
+                    <p style="color: #b5a694; margin-bottom: 0;">Meeting notes from Renaissance conference...</p>
+                </div>
+            </div>
+
+            <!-- Status Messages -->
+            <div class="example-section">
+                <h4>Status Indicators</h4>
+                <div class="status-success">✓ Note successfully processed and synced</div>
+                <div class="status-warning">⚠ OCR confidence low - review extracted text</div>
+                <div class="status-error">✗ Failed to connect to AI service</div>
+                <div class="notification-highlight">★ AI discovered important insights in this note</div>
+                <div class="accent-border" style="color: #b5a694;">Premium feature: Advanced drawing analysis available</div>
+            </div>
+
+            <!-- Gradients -->
+            <div class="example-section">
+                <h4>Signature Gradients</h4>
+                <div class="gradient-1 gradient-showcase">Primary Renaissance Gradient</div>
+                <div class="gradient-2 gradient-showcase">Dark Background Gradient</div>
+                <div class="gradient-4 gradient-showcase">Renaissance Red Accent</div>
+                <div class="gradient-5 gradient-showcase">Subtle Highlight Gradient</div>
+            </div>
+
+            <!-- Code Implementation -->
+            <div class="example-section">
+                <h4>React Native StyleSheet</h4>
+                <div class="code-block">
+const colors = {
+  // Primary Palette
+  renaissanceGold: '#c9a96e',
+  illuminatedParchment: '#f4e4bc',
+  antiqueBronze: '#8b7355',
+  agedLeather: '#6b5b47',
+  
+  // Renaissance Red Accents
+  venetianRed: '#7a4a52',
+  burgundyRose: '#9d5a63',
+  darkWine: '#5a3a3f',
+  mutedCrimson: '#6b4147',
+  
+  // Dark Foundation
+  midnightBlack: '#0a0a0a',
+  charcoal: '#1a1a1a',
+  darkSlate: '#0d1117',
+  deepShadow: '#101418',
+  
+  // Text Hierarchy
+  primaryText: '#e8e2d4',
+  secondaryText: '#b5a694',
+  mutedText: '#8a7d6b',
+  disabledText: '#6b5b47',
+  
+  // Status Colors
+  success: '#4a805d',
+  warning: '#b8860b',
+  error: '#8b4549',
+  info: '#4a6b8a'
+};
+
+const gradients = {
+  primary: 'linear-gradient(135deg, #c9a96e 0%, #f4e4bc 50%, #8b7355 100%)',
+  background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1117 100%)',
+  accent: 'linear-gradient(45deg, rgba(201,169,110,0.1) 0%, rgba(139,115,85,0.1) 100%)',
+  redAccent: 'linear-gradient(135deg, #7a4a52 0%, #c9a96e 50%, #9d5a63 100%)',
+  highlight: 'linear-gradient(45deg, rgba(122,74,82,0.2) 0%, rgba(201,169,110,0.1) 50%, rgba(157,90,99,0.2) 100%)'
+};
+
+// Usage Examples for Highlights:
+const styles = StyleSheet.create({
+  highlightButton: {
+    backgroundColor: colors.venetianRed,
+    borderRadius: 8,
+    padding: 12,
+  },
+  importantNoteBorder: {
+    borderLeftWidth: 4,
+    borderLeftColor: colors.burgundyRose,
+    paddingLeft: 16,
+  },
+  premiumFeatureCard: {
+    backgroundColor: 'rgba(122, 74, 82, 0.15)',
+    borderColor: 'rgba(122, 74, 82, 0.4)',
+    borderWidth: 1,
+  }
+});
+                </div>
+            </div>
+
+            <!-- Design Principles -->
+            <div class="example-section">
+                <h4>Design Philosophy</h4>
+                <p style="color: #b5a694; line-height: 1.6;">
+                    <strong style="color: #c9a96e;">Classical Elegance:</strong> Rich golds and warm tones evoke illuminated manuscripts and Renaissance artistry.<br><br>
+                    <strong style="color: #c9a96e;">Modern Sophistication:</strong> Deep blacks and subtle gradients provide contemporary dark mode comfort.<br><br>
+                    <strong style="color: #9d5a63;">Renaissance Red Accents:</strong> Muted burgundy and venetian red tones add warmth and sophistication, reminiscent of rich tapestries and noble colors.<br><br>
+                    <strong style="color: #c9a96e;">Scholarly Authority:</strong> Typography and spacing reflect the gravitas of academic tradition.<br><br>
+                    <strong style="color: #c9a96e;">Digital Harmony:</strong> Colors designed for optimal screen readability and accessibility.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
